@@ -107,31 +107,75 @@ function MyApp({ Component, pageProps, router }) {
             {/* Nav Menu */}
             <Navbar.Content enableCursorHighlight activeColor='secondary' hideIn="xs" variant="solid-rounded">
 
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="chakra.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="chakra.png" style={{ maxWidth: '44px', marginRight: '0px' }}></Image></Navbar.Link>
               {/* <Navbar.Link style={{fontFamily:'SF Pro Display', fontSize:'25px', color:'white', fontWeight:'500'}} href="/create">
               Create
             </Navbar.Link> */}
               {/* <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="osram.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/market"><Image src="bese.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/gallery"><Image src="tree.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="osram.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/market"><Image src="bese.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/gallery"><Image src="tree.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
             </Navbar.Content>
             {/* Mobile Menu */}
             <Navbar.Collapse>
-              {collapseItems.map((item, index) => (
-                <Navbar.CollapseItem key={item}>
-                  <Link
-                    color="#f2e900"
-                    css={{
-                      minWidth: "66%",
-                    }}
-                    href={"/" + item.toLowerCase()}
-                  >
-                    {item}
-                  </Link>
-                </Navbar.CollapseItem>
-              ))}
+
+              <Navbar.CollapseItem>
+                <Image src="chakra.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Link
+                  color="#f2e900"
+                  css={{
+                    minWidth: "66%",
+                  }}
+                  href="/"
+                >Home
+                </Link>
+              </Navbar.CollapseItem>
+              <Navbar.CollapseItem>
+                <Image src="osram.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Link
+                  color="#f2e900"
+                  css={{
+                    minWidth: "66%",
+                  }}
+                  href="/mint"
+                >Mint
+                </Link>
+              </Navbar.CollapseItem>
+              <Navbar.CollapseItem>
+                <Image src="mmere.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Link
+                  color="#f2e900"
+                  css={{
+                    minWidth: "66%",
+                  }}
+                  href="/create"
+                >Create
+                </Link>
+              </Navbar.CollapseItem>
+              <Navbar.CollapseItem>
+                <Image src="bese.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Link
+                  color="#f2e900"
+                  css={{
+                    minWidth: "66%",
+                  }}
+                  href="/mint"
+                >Market
+                </Link>
+              </Navbar.CollapseItem>
+              <Navbar.CollapseItem>
+                <Image src="tree.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Link
+                  color="#f2e900"
+                  css={{
+                    minWidth: "66%",
+                  }}
+                  href="/gallery"
+                >Gallery
+                </Link>
+              </Navbar.CollapseItem>
+
             </Navbar.Collapse>
             {/* Rainbow Kit Button */}
             <ConnectButton label='Knnxt' showBalance={false} accountStatus={{
@@ -156,7 +200,7 @@ function MyApp({ Component, pageProps, router }) {
           {/* Footer Starts Here */}
           <Footer />
           {/* Toastsss P: */}
-          <ToastContainer transition={Zoom} autoClose={7777} theme='dark'  />
+          <ToastContainer transition={Zoom} autoClose={7777} theme='dark' />
         </NextUIProvider>
       </RainbowKitProvider>
     </WagmiConfig>
@@ -164,3 +208,4 @@ function MyApp({ Component, pageProps, router }) {
 }
 
 export default MyApp;
+  
