@@ -35,108 +35,23 @@ export default function Footer() {
 
   return (
     <div>
-      <Container>
+      <Container display='flex' alignContent='center'>
         <Spacer></Spacer>
-        <Row gap={2}>
-          {/* Polygon Logo */}
-          {/* <Col>
-            <Text h3
-                style={{
-                  color: "#ffffff",
-                  fontSmooth: "always",
-                  textShadow: "-0px 0px 3px #ffffff",
-                  fontFamily: "Space Grotesk",
-                  fontWeight: "300",
-                }}>Deployed on</Text>
-            <ul>
-              {footer2.map((item, idx) => {
-                return (
-                  <img
-                    key={idx}
-                    src={item.img}
-                    style={{ marginRight: "5px" }}
-                    width="50px"
-                    height="50px"
-                  ></img>
-                );
-              })}
-            </ul>
-          </Col> */}
-          {/* Alchmey Logo */}
-          {/* <Col style={{ marginLeft: "5px" }}>
-            <Text h3
-                style={{
-                  color: "#ffffff",
-                  fontSmooth: "always",
-                  textShadow: "-0px 0px 3px #ffffff",
-                  fontFamily: "Space Grotesk",
-                  fontWeight: "300",
-                }}>Powered by</Text>
-            <a href="">
-              <img
-                src="alchemyblue.png"
-                style={{
-                  width: "50px",
-                }}
-              />
-            </a>
-          </Col> */}
+        <Row align='center' justify='center' gap={2}>
           {/* Socials */}
-          <Col>
-            <Text h3
-                style={{
-                  color: "#ffffff",
-                  fontSmooth: "always",
-                  textShadow: "-0px 0px 3px #f2e900",
-                  fontFamily: "Space Grotesk",
-                  fontWeight: "400",
-                }}>
-              
-            </Text>
             <ul>
               {footer1.map((item, idx) => {
                 return (
                   <a key={idx} href={item.url}>
                     <img
                       src={item.img}
-                      style={{ marginRight: "1px" }}
-                      width="66px"
-                      height="66px"
+                      width="44px"
+                      height="44px"
                     ></img>
                   </a>
                 );
               })}
             </ul>
-          </Col>
-          {/* Chigag Branding */}
-          <Col>
-            <a href="https://lyghtcode.vercel.app/">
-              <Text
-                h3
-                style={{
-                  color: theme.colors.primaryLightHover.value,
-                  fontSmooth: "always",
-                  textShadow: "-0px 0px 3px #ffffff",
-                  fontFamily: "Space Grotesk",
-                  fontWeight: "300",
-                }}
-              >
-                Web3 by
-              </Text>
-              <Text
-                h3
-                style={{
-                  color:theme.colors.primaryLightContrast.value,
-                  fontSmooth: "always",
-                  textShadow: "-0px 0px 3px #ffffff",
-                  fontFamily: "Space Grotesk",
-                  fontWeight: "260",
-                }}
-              >
-                LyghtC0de
-              </Text>
-            </a>
-          </Col>
         </Row>
 
       </Container>

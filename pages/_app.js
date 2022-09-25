@@ -87,6 +87,7 @@ function MyApp({ Component, pageProps }) {
         accentColor: '#bd00ff',
         borderRadius: 'small',
         overlayBlur: 'small',
+
       })}
         modalSize="compact" chains={chains}>
         {/* Next U.I. */}
@@ -130,7 +131,7 @@ function MyApp({ Component, pageProps }) {
               ))}
             </Navbar.Collapse>
             {/* Rainbow Kit Button */}
-            <ConnectButton showBalance={false} accountStatus={{
+            <ConnectButton label='Knnxt' showBalance={false} accountStatus={{
               smallScreen: 'avatar',
               largeScreen: 'full',
             }} />

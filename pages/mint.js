@@ -65,32 +65,24 @@ export default function createMarket() {
       <Spacer></Spacer>
       <Container display='flex' justify='center' alignContent='center' lg gap={2} css={{ fontFamily: 'Space Grotesk', fontWeight: '300' }}>
         <Row justify='center'>
-          <Image src="osram.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+          <Image src="osram.png" style={{ maxWidth: '77px'}} />
         </Row>
-        <Row gap={4}>
-          <Col css={{ marginRight: '$7' }}>
+        <Row justify='center' gap={4}>
             <Spacer></Spacer>
             <Box
               component="ul"
               sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', p: 0, m: 0 }}
             >
-              <Card component="li" sx={{ minWidth: 420, minHeight: 400, flexGrow: 1 }}>
+              <Card justify='center' component="li" sx={{ minWidth: 420, maxWidth:600, minHeight: 400, flexGrow: 1 }}>
                 <CardCover>
-                  <video
-                    autoPlay
-                    loop
-                    poster="ghost.gif"
-                  >
-                    <source
-                      src="maia.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
+                  {/* //AIA NFT */}
+                  <Image height={400} src='ghost.gif'/>
                 </CardCover>
               </Card>
             </Box>
-          </Col>
-          <Col>
+          
+        </Row>
+        <Row justify='center' align='center'>
             <Spacer></Spacer>
             {/* <Text h3>Mint Dashboard</Text> */}
             <Card display='flex' justify='center' style={{ maxWidth: '300px', background: '#000000', boxShadow: '0px 0px 5px #ffffff60' }}>
@@ -111,8 +103,7 @@ export default function createMarket() {
                 </Row>
               </Container>
             </Card>
-          </Col>
-        </Row>
+          </Row>
       </Container>
     </div>
   )
