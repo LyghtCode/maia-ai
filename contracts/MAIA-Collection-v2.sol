@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 pragma solidity ^0.8.4;
 
-contract Collection is ERC721Enumerable, Ownable {
+contract AIACollection is ERC721Enumerable, Ownable {
 
     
     using Strings for uint256;
@@ -21,7 +21,7 @@ contract Collection is ERC721Enumerable, Ownable {
 
 
     function _baseURI() internal view virtual override returns (string memory) {
-    return "https://gateway.pinata.cloud/ipfs/QmVr3MuS7C6Y2yhbH1DixcAd1JSKLPxW8kmAzD2W1cg9q6/";
+    return "https://gateway.pinata.cloud/ipfs/QmUfs4yTDudwyX9wXDSL4WCT8vXK1GQtv9qSwNH7tCNuc2/";
 
     }
     

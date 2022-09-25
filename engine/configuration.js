@@ -1,8 +1,8 @@
 //AIA Collection Address
-export var nftcollection = "0x35b41246E801a9092291189b9e4140E91AF5ea8A"
+export var nftcollection = "0xBF80517Ac5CF4648eca25A11f9bbDBa7E8b61a41"
 
 //deploy with AIA Collection Address from above as deployment arguement!
-export var nftresell = "0x0D7bE733E80fbd0b70663b770Fd0eF6F48426463"
+export var nftresell = "0xEe21e4a8e15cAF6DB0b0f8e29318995E706DaAa6"
 
 //Main Market Contract
 export var marketcontract = "0xcB294Fa43980EE30b28e35D6c8aDFa1685204FB6"
