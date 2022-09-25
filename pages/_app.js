@@ -1,10 +1,9 @@
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import 'sf-font';
-import { Text, Navbar, Image, Link } from '@nextui-org/react';
+import { Navbar, Image, Link } from '@nextui-org/react';
 import Footer from './footer';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Typography from '@mui/joy/Typography';
 import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
@@ -20,6 +19,7 @@ import {
 } from 'wagmi';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { publicProvider } from 'wagmi/providers/public';
+import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 
 const { chains, provider } = configureChains(
   [chain.polygon],
@@ -28,6 +28,8 @@ const { chains, provider } = configureChains(
     publicProvider()
   ]
 );
+
+
 
 const { connectors } = getDefaultWallets({
   appName: 'LyghtC0des Marketplace',
@@ -77,7 +79,8 @@ const collapseItems = [
   "Gallery",
 ];
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
+  // const router = useRouter();
   //******LyghtC0des NFT Marketplace******//
 
   return (
@@ -136,14 +139,24 @@ function MyApp({ Component, pageProps }) {
               largeScreen: 'full',
             }} />
           </Navbar>
-          {/* Main Site Pages */}
-          <Component {...pageProps} />
+          {/* Animation Settings */}
+          <LazyMotion features={domAnimation}>
+            <AnimatePresence mode="wait"
+            >
+              <motion.div className="page-wrap" key={router.route} initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                {/* Main Site Pages */}
+                <Component {...pageProps} key={router.route} />
+              </motion.div>
+            </AnimatePresence>
+          </LazyMotion>
           {/* Footer Starts Here */}
-          <Footer>
-            <Footer />
-          </Footer>
+          <Footer />
           {/* Toastsss P: */}
-          <ToastContainer theme='dark' />
+          <ToastContainer transition={Zoom} autoClose={7777} theme='dark'  />
         </NextUIProvider>
       </RainbowKitProvider>
     </WagmiConfig>
