@@ -98,14 +98,18 @@ export default function Create() {
   return (
     <div>
       <Spacer></Spacer>
-      <Container lg display='flex' css={{ fontFamily: 'Space Grotesk', fontWeight: '300' }}>
+      <Container lg display='flex' css={{ fontFamily: 'Genos', fontWeight: '300', fontSize: '33px', }}>
         <Row justify='center'>
           <Image src="mmere.png" style={{ maxWidth: '77px' }} />
         </Row>
         <Row align='center' gap={4}>
           <Card css={{ marginTop: '$5', marginBottom: '$5' }}>
             <Card.Body justify='center' style={{ backgroundColor: "#00000040" }}>
-              <Text >MAIA is an A.I. powered Web3 Marketplace. Name your creation, describe your NFT and let MAIA handle the rest. Creation takes time, please be patient.</Text>
+              <Text style={
+              {fontSize: '26px',
+            textAlign: 'center',
+            }
+              } >MAIA is an A.I. powered Web3 Marketplace. Name your creation, describe your NFT and let MAIA handle the rest. Creation takes time, please be patient.</Text>
             </Card.Body>
           </Card>
         </Row>

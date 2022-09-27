@@ -242,7 +242,7 @@ export default function Gallery(props) {
                       <h5
                         style={{
                           color: "#9D00FF",
-                          fontFamily: "Space Grotesk",
+                          fontFamily: "Genos",
                         }}
                       >
                         {nft.contract}
@@ -264,7 +264,7 @@ export default function Gallery(props) {
                           }}
                           style={{
                             color: "white",
-                            fontFamily: "Space Grotesk",
+                            fontFamily: "Genos",
                             fontWeight: "bolder",
                             fontSize: "15px",
                           }}

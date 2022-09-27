@@ -63,7 +63,7 @@ export default function Mint() {
   return (
     <div>
       <Spacer></Spacer>
-      <Container display='flex' justify='center' alignContent='center' lg gap={2} css={{ fontFamily: 'Space Grotesk', fontWeight: '300' }}>
+      <Container display='flex' justify='center' alignContent='center' lg gap={2} css={{ fontFamily: 'Genos', fontWeight: '300' }}>
         <Row justify='center'>
           <Image src="osram.png" style={{ maxWidth: '77px'}} />
         </Row>

@@ -45,7 +45,7 @@ const wagmiClient = createClient({
 const theme = createTheme({
   type: 'dark',
   theme: {
-    fontFamily: 'Space Grotesk',
+    fontFamily: 'Genos',
     colors: {
       primaryLight: '#00ff9f',
       primaryLightHover: '#00b8ff',
@@ -68,7 +68,7 @@ const theme = createTheme({
     },
     space: {},
     fonts: {
-      sans: 'Space Grotesk, sans-serif;'
+      sans: 'Genos, sans-serif;'
     }
   }
 })
@@ -107,69 +107,74 @@ function MyApp({ Component, pageProps, router }) {
             {/* Nav Menu */}
             <Navbar.Content enableCursorHighlight activeColor='secondary' hideIn="xs" variant="solid-rounded">
 
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="chakra.png" style={{ maxWidth: '44px', marginRight: '0px' }}></Image></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="chakra.png" style={{ maxWidth: '44px', marginRight: '0px' }}></Image></Navbar.Link>
               {/* <Navbar.Link style={{fontFamily:'SF Pro Display', fontSize:'25px', color:'white', fontWeight:'500'}} href="/create">
               Create
             </Navbar.Link> */}
-              {/* <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="osram.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/market"><Image src="bese.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Space Grotesk', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/gallery"><Image src="tree.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              {/* <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="osram.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/market"><Image src="bese.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/gallery"><Image src="tree.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
             </Navbar.Content>
             {/* Mobile Menu */}
             <Navbar.Collapse>
 
               <Navbar.CollapseItem>
-                <Image src="chakra.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Image src="chakra.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
                 <Link
                   color="#f2e900"
                   css={{
                     minWidth: "66%",
+                    fontSize: '33px',
                   }}
                   href="/"
                 >Home
                 </Link>
               </Navbar.CollapseItem>
               <Navbar.CollapseItem>
-                <Image src="osram.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Image src="osram.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
                 <Link
                   color="#f2e900"
                   css={{
                     minWidth: "66%",
+                    fontSize: '33px',
                   }}
                   href="/mint"
                 >Mint
                 </Link>
               </Navbar.CollapseItem>
               <Navbar.CollapseItem>
-                <Image src="mmere.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Image src="mmere.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
                 <Link
                   color="#f2e900"
                   css={{
                     minWidth: "66%",
+                    fontSize: '33px',
                   }}
                   href="/create"
                 >Create
                 </Link>
               </Navbar.CollapseItem>
               <Navbar.CollapseItem>
-                <Image src="bese.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Image src="bese.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
                 <Link
                   color="#f2e900"
                   css={{
                     minWidth: "66%",
+                    fontSize: '33px',
                   }}
                   href="/mint"
                 >Market
                 </Link>
               </Navbar.CollapseItem>
               <Navbar.CollapseItem>
-                <Image src="tree.png" style={{ maxWidth: '22px', marginRight: '0px' }} />
+                <Image src="tree.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
                 <Link
                   color="#f2e900"
                   css={{
                     minWidth: "66%",
+                    fontSize: '33px',
                   }}
                   href="/gallery"
                 >Gallery

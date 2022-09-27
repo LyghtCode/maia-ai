@@ -174,7 +174,7 @@ export default function Home(props) {
                     style={{
                       color: "white",
                       fontWeight: "bold",
-                      fontFamily: "Space Grotesk",
+                      fontFamily: "Genos",
                       fontWeight: "300",
                       fontSize: "20px",
                       marginLeft: "3px",
@@ -229,7 +229,7 @@ export default function Home(props) {
                   style={{
                     color: "white",
                     fontWeight: "bold",
-                    fontFamily: "Space Grotesk",
+                    fontFamily: "Genos",
                     fontWeight: "300",
                     fontSize: "20px",
                     marginLeft: "3px",
