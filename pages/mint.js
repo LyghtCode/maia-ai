@@ -15,7 +15,7 @@ import { useSigner, useAccount, useNetwork } from 'wagmi';
 
 
 
-export default function createMarket() {
+export default function Mint() {
   const { theme } = useTheme()
   const { address } = useAccount()
   const { chain } = useNetwork()

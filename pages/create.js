@@ -5,49 +5,62 @@ import Web3Modal from "web3modal";
 import NFT from '../engine/MAIA.json';
 import Market from '../engine/Market.json';
 import { nftcreator, marketcontract } from '../engine/configuration';
-import { Card, CardCover, Button, Input, Col, Row, Spacer, Container, Text, Image } from '@nextui-org/react';
+import { Card, Button, Input, Col, Row, Spacer, Container, Text, Image } from '@nextui-org/react';
 import 'sf-font'
 import client from '../engine/configuration';
+import { toast } from 'react-toastify';
 
-export default function createMarket() {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+export default function Create() {
+  const [prediction, setPrediction] = useState(null);
+  const [error, setError] = useState(null);
   const [fileUrl, setFileUrl] = useState(null)
   const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' })
 
   useEffect(() => {
   }, [])
 
-  const router = useRouter()
+  const router = useRouter();
+  const { name, description, price } = formInput;
 
-  async function onChange(e) {
-    const file = e.target.files[0]
-    try {
-      const added = await client.add(
-        file,
-        {
-          progress: (prog) => console.log(`received: ${prog}`)
-        }
-      )
-      const url = `https://ipfs.io/ipfs/${added.path}`
-      setFileUrl(url)
-    } catch (error) {
-      console.log('Error uploading file: ', error)
-    }
-  }
+  const handleSubmit = async (e) => {
 
-  async function createMarket() {
-    const { name, description, price } = formInput
-    if (!name || !description || !price || !fileUrl) return
-    const data = JSON.stringify({
-      name, description, image: fileUrl
-    })
-    try {
-      const added = await client.add(data)
-      const url = `https://ipfs.io/ipfs/${added.path}`
-      createNFT(url)
-    } catch (error) {
-      console.log('Error uploading file: ', error)
+    e.preventDefault();
+    const response = await fetch("/api/predictions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: description,
+      }),
+    });
+    let prediction = await response.json();
+    toast.info("MAIA is creating your NFT...");
+    console.log('prediction response is ' + JSON.stringify(prediction));
+    if (response.status !== 201) {
+      setError(prediction.detail);
+      return;
     }
-  }
+    setPrediction(prediction);
+
+    while (
+      prediction.status !== "succeeded" &&
+      prediction.status !== "failed"
+    ) {
+      await sleep(1000);
+      const response = await fetch("/api/predictions/" + prediction.id);
+      prediction = await response.json();
+      console.log('Second prediction response is ' + JSON.stringify(prediction));
+      if (response.status !== 200) {
+        setError(prediction.detail);
+        return;
+      }
+      setPrediction(prediction);
+    }
+  };
+
 
   async function createNFT(url) {
     const web3Modal = new Web3Modal()
@@ -69,20 +82,6 @@ export default function createMarket() {
     router.push('/')
   }
 
-  async function buyNFT() {
-    const { name, description } = formInput
-    if (!name || !description || !fileUrl) return
-    const data = JSON.stringify({
-      name, description, image: fileUrl
-    })
-    try {
-      const added = await client.add(data)
-      const url = `https://ipfs.io/ipfs/${added.path}`
-      mintNFT(url)
-    } catch (error) {
-      console.log('Error uploading file: ', error)
-    }
-  }
 
   async function mintNFT(url) {
     const web3Modal = new Web3Modal()
@@ -111,9 +110,22 @@ export default function createMarket() {
           </Card>
         </Row>
 
-        <Card maxWidth={400} css={{ marginTop: '$5' }} >
-          <Card.Body style={{ backgroundColor: "#00000040" }}>
-            <video
+        <Card maxwidth={400} css={{ marginTop: '$5' }} >
+
+          {prediction && (
+            <Card.Body style={{ backgroundColor: "#00000040" }}>
+              <Text>{prediction.status}</Text>
+              {prediction.output && (
+                <Image
+                  src={prediction.output[0]}
+                  alt="output"
+                  width={400}
+                  height={400}
+                />
+              )}
+            </Card.Body>
+          )}
+          {/* <video
               autoPlay
               loop
               poster="ghost.gif"
@@ -122,12 +134,12 @@ export default function createMarket() {
                 src="cyberpunk1.mp4"
                 type="video/mp4"
               />
-            </video>
+            </video> */}
 
-          </Card.Body>
+
         </Card>
         <Spacer></Spacer>
-        <Card alignContent='center' style={{ background: '#000000', boxShadow: '0px 0px 5px #ffffff60' }}>
+        <Card aligncontent='center' style={{ background: '#000000', boxShadow: '0px 0px 5px #ffffff60' }}>
           <Card css={{ marginTop: '$1' }}>
             <Card.Body style={{ backgroundColor: "#000000" }}>
               <Input
@@ -137,16 +149,8 @@ export default function createMarket() {
               />
             </Card.Body>
           </Card>
-          <Card >
-            <Card.Body style={{ backgroundColor: "#000000" }}>
-              <Input
-                placeholder="NFT Description"
-                aria-label="NFT Description"
-                onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
-              />
-            </Card.Body>
-          </Card>
-          <Card>
+
+          {/* <Card>
             <Card.Body style={{ backgroundColor: "#000000" }}>
               <input
                 type="file"
@@ -155,21 +159,32 @@ export default function createMarket() {
               />
               {fileUrl && <img src={fileUrl} alt="File Upload" />}
             </Card.Body>
-          </Card>
-          <Container justify='center' alignContent='center' css={{ marginBottom: '$2' }}>
-            <Row justify='center'>
+          </Card> */}
+          <Container justify='center' aligncontent='center' css={{ marginBottom: '$2' }}>
+            {/* <Row justify='center'>
               <Input
                 css={{ marginTop: '$2' }}
                 placeholder="Set your price in MATIC"
                 aria-label="Set your price in MATIC"
                 onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
               />
-            </Row>
-            <Row justify='center'>
-              <Button auto bordered rounded ghost animated shadow justify='center' style={{ fontSize: '20px' }} onPress={createMarket} css={{ marginTop: '$2', marginBottom: '$5' }}>
-                <Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
-              </Button>
-            </Row>
+            </Row> */}
+            <form onSubmit={handleSubmit}>
+              <Card >
+                <Card.Body style={{ backgroundColor: "#000000" }}>
+                  <Input
+                    placeholder="NFT Description"
+                    aria-label="NFT Description"
+                    onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+                  />
+                </Card.Body>
+              </Card>
+              <Row justify='center'>
+                <Button type='submit' auto bordered rounded ghost animated shadow justify='center' style={{ fontSize: '20px' }} css={{ marginTop: '$2', marginBottom: '$5' }}>
+                  <Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
+                </Button>
+              </Row>
+            </form>
           </Container>
         </Card>
 

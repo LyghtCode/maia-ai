@@ -13,7 +13,7 @@ import { useAccount, useNetwork } from 'wagmi'
 
 
 
-export default function Sell(props) {
+export default function Gallery(props) {
   const { theme } = useTheme()
 
   const { address, isConnecting, isDisconnected, isConnected } = useAccount()
