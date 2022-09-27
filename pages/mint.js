@@ -67,13 +67,13 @@ export default function createMarket() {
         <Row justify='center'>
           <Image src="osram.png" style={{ maxWidth: '77px'}} />
         </Row>
-        <Row justify='center' gap={4}>
+        <Row justify='center' gap={1}>
             <Spacer></Spacer>
             <Box
               component="ul"
               sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', p: 0, m: 0 }}
             >
-              <Card justify='center' component="li" sx={{ minWidth: 420, maxWidth:600, minHeight: 400, flexGrow: 1 }}>
+              <Card justify='center' component="li" sx={{ minWidth: 400, maxWidth:600, minHeight: 400, flexGrow: 1 }}>
                 <CardCover>
                   {/* //AIA NFT */}
                   <Image height={400} src='ghost.gif'/>
