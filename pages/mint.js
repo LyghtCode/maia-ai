@@ -29,8 +29,6 @@ export default function Mint() {
 
     try {
       const { amount } = formInput
-      //Chigag update TOKEN URI here
-      const tokenUri = 'https://bafybeibsj2kao3qxfnasff56jeyww6kpr7ooylta2cqyujkwx44fo5stiu.ipfs.nftstorage.link/metadata/1.json';
       const quantity = Number(amount);
 
       // Chigag Network Logic - LyghtCode
@@ -40,9 +38,10 @@ export default function Mint() {
         console.log("Preparing Mint...")
         // Alchemy Logic - LyghtCode
         let contract = new ethers.Contract(nftcollection, AIACollection, signer);
-        let transaction = await contract.safeMint(address, tokenUri, quantity);
+        let transaction = await contract.mint(address, quantity);
+        toast.info("Trusting AIA...");
         await transaction.wait();
-        router.push('/portal');
+        router.push('/gallery');
       }
       else {
         toast.error("Switch to Polygon");
