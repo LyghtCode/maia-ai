@@ -1,5 +1,4 @@
 import { createTheme, NextUIProvider } from "@nextui-org/react";
-import 'sf-font';
 import { Navbar, Image, Link } from '@nextui-org/react';
 import Footer from './footer';
 import { ToastContainer, Zoom } from 'react-toastify';

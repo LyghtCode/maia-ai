@@ -9,8 +9,6 @@ import { Grid, Card, Text, Button, Row, Container, Spacer, Image } from '@nextui
 import { nftcreator, marketcontract, nftresell } from '../engine/configuration';
 import { Alchemy, Network } from "alchemy-sdk";
 import confetti from 'canvas-confetti';
-import 'sf-font';
-import "react-multi-carousel/lib/styles.css";
 import { toast } from 'react-toastify';
 import { useAccount, useNetwork, useSigner } from 'wagmi'
 
