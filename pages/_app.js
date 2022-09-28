@@ -20,6 +20,8 @@ import {
 import { infuraProvider } from 'wagmi/providers/infura';
 import { publicProvider } from 'wagmi/providers/public';
 import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
+import "@fontsource/genos"
+
 
 const { chains, provider } = configureChains(
   [chain.polygon],

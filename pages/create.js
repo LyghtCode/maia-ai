@@ -106,9 +106,10 @@ export default function Create() {
           <Card css={{ marginTop: '$5', marginBottom: '$5' }}>
             <Card.Body justify='center' style={{ backgroundColor: "#00000040" }}>
               <Text style={
-              {fontSize: '26px',
-            textAlign: 'center',
-            }
+                {
+                  fontSize: '23px',
+                  textAlign: 'center',
+                }
               } >MAIA is an A.I. powered Web3 Marketplace. Name your creation, describe your NFT and let MAIA handle the rest. Creation takes time, please be patient.</Text>
             </Card.Body>
           </Card>
@@ -117,8 +118,12 @@ export default function Create() {
         <Card maxwidth={400} css={{ marginTop: '$5' }} >
 
           {prediction && (
-            <Card.Body style={{ backgroundColor: "#00000040" }}>
-              <Text>{prediction.status}</Text>
+            <Card.Body justify='center' style={{ backgroundColor: "#00000040" }}>
+              <Text style={
+                {
+                  textAlign: 'center'
+                }
+              }>{prediction.status}</Text>
               {prediction.output && (
                 <Image
                   src={prediction.output[0]}

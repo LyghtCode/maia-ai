@@ -8,5 +8,5 @@ yarn dev
 
 ```
 
-## Built with Alchemy, Replicate & Next.js
+## Built with Alchemy, Stable Diffusion & Next.js
 

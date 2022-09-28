@@ -1470,6 +1470,11 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
+"@fontsource/genos@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/genos/-/genos-4.5.9.tgz#9ab288f902521e5e953764120aff5949d99c12cc"
+  integrity sha512-391KjRksOe2l43Sv3BkOEJY+huv8qwaFQI4wuNQnFAa82X5eoRJYlNkJ/l2gyL46vfGQQCEwUUt68ntRHQxDmw==
+
 "@formatjs/ecma402-abstract@1.12.0":
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.12.0.tgz#2fb5e8983d5fae2fad9ec6c77aec1803c2b88d8e"
