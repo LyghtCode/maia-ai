@@ -29,9 +29,10 @@ export default function Gallery(props) {
   }
 
   useEffect(() => {
-    if (isConnected) {
+    if (isConnected && !nfts.length) {
+      console.log("Wallet is connected" + chain.name)
       getAlchemyNFTs()
-      console.log("Connected to " + chain.name)
+      
     }
 
   }, [getNfts])
