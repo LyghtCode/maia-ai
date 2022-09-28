@@ -1,0 +1,27 @@
+{
+    "name": "MAIA A.I. Creator",
+    "symbol": "AIA",
+    "description": "In Lak'ech Ala K'in",
+    "image": "https://gateway.pinata.cloud/ipfs/QmUfs4yTDudwyX9wXDSL4WCT8vXK1GQtv9qSwNH7tCNuc2",
+    "external_url": "https://maia-ai.vercel.app",
+    "collection": {"name": "Genesis", "family": "Creator"},
+    "attributes": [
+      {
+        "trait_type": "Membership",
+        "value": "Genesis"
+      }
+ 
+    ],
+    "properties": {
+      "files": [
+        {
+          "uri": "ghost.gif",
+          "type": "gif"
+        }
+      ],
+      "category": "image"
+    
+    }
+  
+  
+  }

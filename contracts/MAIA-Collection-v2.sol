@@ -12,6 +12,7 @@ contract AIACollection is ERC721Enumerable, Ownable {
     
     using Strings for uint256;
     string public baseURI;
+    // need to add later for custom origin NFT's
     string public baseExtension = ".json";
     uint256 public maxSupply = 999;
     uint256 public maxMintAmount = 5;
@@ -21,7 +22,7 @@ contract AIACollection is ERC721Enumerable, Ownable {
 
 
     function _baseURI() internal view virtual override returns (string memory) {
-    return "https://gateway.pinata.cloud/ipfs/QmUfs4yTDudwyX9wXDSL4WCT8vXK1GQtv9qSwNH7tCNuc2/";
+    return "https://gateway.pinata.cloud/ipfs/Qmc5SKwEnHswk2YRjrzgNZ8WbpwpnDCfmzaeudpKCRbQee/";
 
     }
     
@@ -66,7 +67,7 @@ contract AIACollection is ERC721Enumerable, Ownable {
                 string memory currentBaseURI = _baseURI();
                 return
                 bytes(currentBaseURI).length > 0 
-                ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
+                ? string(abi.encodePacked(currentBaseURI))
                 : "";
         }
         // only owner
