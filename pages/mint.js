@@ -64,7 +64,7 @@ export default function Mint() {
       <Spacer></Spacer>
       <Container display='flex' justify='center' alignContent='center' lg gap={2} css={{ fontFamily: 'Genos', fontWeight: '300' }}>
         <Row justify='center'>
-          <Image src="osram.png" style={{ maxWidth: '77px'}} />
+          <Image src="etz.png" style={{ maxWidth: '77px'}} />
         </Row>
         <Row justify='center' gap={1}>
             <Spacer></Spacer>
@@ -97,7 +97,7 @@ export default function Mint() {
                 </Row>
                 <Row justify='center'>
                   <Button auto bordered rounded ghost animated shadow justify='center' style={{ fontSize: '20px' }} onPress={mintNFT} css={{ marginTop: '$2', marginBottom: '$5' }}>
-                    <Image src="osram.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
+                    <Image src="etz.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
                   </Button>
                 </Row>
               </Container>

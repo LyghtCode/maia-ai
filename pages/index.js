@@ -130,7 +130,7 @@ export default function Home(props) {
       <Spacer></Spacer>
       <Container display='flex' justify='center' alignContent='center' xs css={{ marginBottom: "$3" }}>
         <Row justify='center'>
-          <Image src="chakra.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+          <Image src="bakab.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
         </Row>
       </Container>
       {/* </Container> */}

@@ -105,7 +105,7 @@ export default function Gallery(props) {
         <Spacer></Spacer>
         <Container display='flex' justify='center' aligncontent='center' md="true">
           <Row justify='center'>
-            <Image src="tree.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+            <Image src="lamat.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
           </Row>
           <Row display='flex' justify='center' aligncontent='center'>
             <Col display='flex' justify='center' aligncontent='center' css={{ size: "$50", paddingLeft: "$10", paddingTop: "$1" }}>
@@ -139,7 +139,7 @@ export default function Gallery(props) {
       <Spacer></Spacer>
       <Container display='flex' justify='center' aligncontent='center' md="true">
         <Row justify='center'>
-          <Image src="tree.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+          <Image src="lamat.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
         </Row>
         <Row display='flex' justify='center' aligncontent='center'>
           <Col css={{ size: "$50", paddingLeft: "$10", paddingTop: "$1" }}>

@@ -127,7 +127,7 @@ export default function Sell(props) {
         <Container display='flex' justify='center' alignContent='center' md="true">
 
           <Row justify='center'>
-            <Image src="bese.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+            <Image src="ahau.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
           </Row>
           <Row display='flex' justify='center' alignContent='center'>
             <Col css={{ size: "$50", paddingLeft: "$10", paddingTop: "$1" }}>
@@ -158,7 +158,7 @@ export default function Sell(props) {
       <Spacer></Spacer>
       <Container display='flex' justify='center' alignContent='center' md="true">
         <Row justify='center'>
-          <Image src="bese.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
+          <Image src="ahau.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
         </Row>
         <Row display='flex' justify='center' alignContent='center'>
           <Col css={{ size: "$50", paddingLeft: "$10", paddingTop: "$1" }}>

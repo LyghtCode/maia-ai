@@ -100,7 +100,7 @@ export default function Create() {
       <Spacer></Spacer>
       <Container lg display='flex' css={{ fontFamily: 'Genos', fontWeight: '300', fontSize: '33px', }}>
         <Row justify='center'>
-          <Image src="mmere.png" style={{ maxWidth: '77px' }} />
+          <Image src="chuwen.png" style={{ maxWidth: '77px' }} />
         </Row>
         <Row align='center' gap={4}>
           <Card css={{ marginTop: '$5', marginBottom: '$5' }}>
@@ -190,7 +190,7 @@ export default function Create() {
               </Card>
               <Row justify='center'>
                 <Button type='submit' auto bordered rounded ghost animated shadow justify='center' style={{ fontSize: '20px' }} css={{ marginTop: '$2', marginBottom: '$5' }}>
-                  <Image src="mmere.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
+                  <Image src="chuwen.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
                 </Button>
               </Row>
             </form>

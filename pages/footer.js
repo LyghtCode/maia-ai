@@ -7,7 +7,7 @@ export default function Footer() {
   const footer1 = [
     {
       id: 1,
-      img: "chakra.png",
+      img: "bakab.png",
       url: "https://lyghtcode.vercel.app",
     },
     {
