@@ -6,7 +6,6 @@ import NFT from '../engine/MAIA.json';
 import Market from '../engine/Market.json';
 import { nftcreator, marketcontract } from '../engine/configuration';
 import { Card, Button, Input, Col, Row, Spacer, Container, Text, Image } from '@nextui-org/react';
-import 'sf-font'
 import client from '../engine/configuration';
 import { toast } from 'react-toastify';
 

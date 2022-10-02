@@ -1,4 +1,3 @@
-import 'sf-font';
 import { Text, Row, Spacer, Container, Col, useTheme } from '@nextui-org/react';
 
 

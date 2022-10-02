@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import AIACollection from '../engine/AIACollection.json'
 import { nftcollection } from '../engine/configuration';
 import { Button, Input, Col, Row, Spacer, Container, Text, Image, useTheme } from '@nextui-org/react';
-import 'sf-font'
 import { toast } from 'react-toastify';
 import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';

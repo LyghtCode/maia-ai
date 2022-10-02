@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Resell from '../engine/Resell.json';
 import MAIA from '../engine/MAIA.json'
 import { Card, Button, Col, Row, Container, Text, Grid, Input, useTheme, Spacer, Image } from '@nextui-org/react';
-import 'sf-font';
 import { nftresell, nftcollection, nftcreator } from '../engine/configuration';
 import { Alchemy, Network } from "alchemy-sdk";
 import { toast } from 'react-toastify';

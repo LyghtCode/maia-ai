@@ -4,7 +4,6 @@ import Web3Modal from "web3modal";
 import Resell from '../engine/Resell.json';
 import GDAOCollection from '../engine/AIACollection.json'
 import { Card, Button, Col, Row, Container, Text, Grid, Input } from '@nextui-org/react';
-import 'sf-font';
 import Web3 from 'web3';
 import { nftresell, nftcollection, nftcreator } from '../engine/configuration';
 import { Alchemy, Network } from "alchemy-sdk";

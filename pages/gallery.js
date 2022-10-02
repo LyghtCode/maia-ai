@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Button, Col, Row, Container, Text, useTheme, Spacer, Image, Grid, Input } from '@nextui-org/react';
-import 'sf-font';
 import { Alchemy, Network } from "alchemy-sdk";
 import { toast } from 'react-toastify';
 import Masonry from '@mui/lab/Masonry';
