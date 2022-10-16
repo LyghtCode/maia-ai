@@ -96,6 +96,8 @@ function MyApp({ Component, pageProps, router }) {
         modalSize="compact" chains={chains}>
         {/* Next U.I. */}
         <NextUIProvider theme={theme}>
+          
+
           <Navbar isBordered variant="floating">
             {/* Branding */}
             <Navbar.Brand>

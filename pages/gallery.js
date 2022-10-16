@@ -8,7 +8,8 @@ import CardCover from '@mui/joy/CardCover';
 import CardOverflow from '@mui/joy/CardOverflow';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi';
+
 
 
 
