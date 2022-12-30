@@ -20,7 +20,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@300;400&family=El+Messiri&family=Genos:wght@200;300;400&family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet"/> */}
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png"/>
-          <meta name="theme-color" content="#000" />
+          <meta name="theme-color" content="#000"/>
         </Head>
         <body>
           <Main />
