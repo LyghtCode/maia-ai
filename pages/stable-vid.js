@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export default function Create() {
+export default function StableVid() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
   const [fileUrl, setFileUrl] = useState(null)
@@ -32,13 +32,14 @@ export default function Create() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // Model version
-        version: "a9758cbfbd5f3c2094457d996681af52552901775aa2d6dd0b17fd15df959bef",
-        input:{prompt: description},
+        // prompt: description,
+        // OpenJourny
+        version: "e22e77495f2fb83c34d5fae2ad8ab63c0a87b6b573b6208e1535b23b89ea66d6",
+        input: { animation_prompts: description, },
       }),
     });
     let prediction = await response.json();
-    toast.info("MAIA is creating your NFT...");
+    toast.info("Hang tight & don't close the page...");
     console.log('prediction response is ' + JSON.stringify(prediction));
     if (response.status !== 201) {
       setError(prediction.detail);
@@ -101,7 +102,7 @@ export default function Create() {
       <Spacer></Spacer>
       <Container lg display='flex' css={{ fontFamily: 'Genos', fontWeight: '300', fontSize: '33px', }}>
         <Row justify='center'>
-          <Image src="chuwen.png" style={{ maxWidth: '77px' }} />
+          <Image src="lamat.png" style={{ maxWidth: '77px' }} />
         </Row>
         <Row align='center' gap={4}>
           <Card css={{ marginTop: '$5', marginBottom: '$5' }}>
@@ -111,7 +112,7 @@ export default function Create() {
                   fontSize: '23px',
                   textAlign: 'center',
                 }
-              } >MAIA is an A.I. powered Web3 Marketplace. Name your creation, describe your NFT and let MAIA handle the rest. Creation takes time, please be patient.</Text>
+              } >Deforum Diffusion Video Generation</Text>
             </Card.Body>
           </Card>
         </Row>
@@ -126,11 +127,15 @@ export default function Create() {
                 }
               }>{prediction.status}</Text>
               {prediction.output && (
-                <Image
-                  src={prediction.output[0]}
+                <video
+                  src={prediction.output}
+                  autoPlay
+                  loop
+                  controls
                   alt="output"
-                  width={400}
-                  height={400}
+                  width='auto'
+                  height='auto'
+                
                 />
               )}
             </Card.Body>

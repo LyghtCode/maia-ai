@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export default function Create() {
+export default function MidJourn() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
   const [fileUrl, setFileUrl] = useState(null)
@@ -32,9 +32,9 @@ export default function Create() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // Model version
-        version: "a9758cbfbd5f3c2094457d996681af52552901775aa2d6dd0b17fd15df959bef",
-        input:{prompt: description},
+        // OpenJourny
+        version: "9936c2001faa2194a261c01381f90e65261879985476014a0a37a334593a05eb",
+        input:{prompt: "mdjrny-v4 style " + description},
       }),
     });
     let prediction = await response.json();
@@ -101,7 +101,7 @@ export default function Create() {
       <Spacer></Spacer>
       <Container lg display='flex' css={{ fontFamily: 'Genos', fontWeight: '300', fontSize: '33px', }}>
         <Row justify='center'>
-          <Image src="chuwen.png" style={{ maxWidth: '77px' }} />
+          <Image src="ahau.png" style={{ maxWidth: '77px' }} />
         </Row>
         <Row align='center' gap={4}>
           <Card css={{ marginTop: '$5', marginBottom: '$5' }}>
@@ -111,7 +111,7 @@ export default function Create() {
                   fontSize: '23px',
                   textAlign: 'center',
                 }
-              } >MAIA is an A.I. powered Web3 Marketplace. Name your creation, describe your NFT and let MAIA handle the rest. Creation takes time, please be patient.</Text>
+              } >Midjourney Image Generation</Text>
             </Card.Body>
           </Card>
         </Row>

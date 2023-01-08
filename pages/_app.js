@@ -117,8 +117,8 @@ function MyApp({ Component, pageProps, router }) {
               {/* <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
               <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="etz.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
               <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="chuwen.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/market"><Image src="ahau.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/gallery"><Image src="lamat.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/midjourn"><Image src="ahau.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/stable-vid"><Image src="lamat.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
             </Navbar.Content>
             {/* Mobile Menu */}
             <Navbar.Collapse>
