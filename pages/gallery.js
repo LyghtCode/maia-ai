@@ -9,97 +9,56 @@ import CardOverflow from '@mui/joy/CardOverflow';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import { useAccount, useNetwork } from 'wagmi';
+import { useQuery } from 'react-query';
 
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://nullspauughetdzjgtjj.supabase.co', process.env.NEXT_PUBLIC_SUPABASE_KEY)
+
+// https://znvgxowkyhkrfxbzwedo.supabase.co/storage/v1/object/public/images/41fb287f-7bd4-4896-b4aa-db24f145e388/ffe676d5-b440-4b24-a1ca-4480839a3c80
+
+const CDNURL = "https://nullspauughetdzjgtjj.supabase.co/storage/v1/object/public/maia-images/all";
 
 
 
 export default function Gallery(props) {
   const { theme } = useTheme()
+  const [images, setImages] = useState([]);
+  const { address } = useAccount();
 
-  const { address, isConnecting, isDisconnected, isConnected } = useAccount()
-  const { chain } = useNetwork()
+  async function getImages() {
+    const { data, error } = await supabase
+      .storage
+      .from('maia-images')
+      .list('all/', {
+        limit: 100,
+        offset: 1,
+        sortBy: { column: "name", order: "asc" }
+      });   // Cooper/
+    // data: [ image1, image2, image3 ]
+    // image1: { name: "subscribeToCooperCodes.png" }
 
+    // to load image1: CDNURL.com/subscribeToCooperCodes.png -> hosted image
 
-  const [nfts, getNfts] = useState([])
-  const [loaded, awaitLoading] = useState('not-loaded')
-
-  var alchemysettings = {
-    apiKey: process.env.NEXT_APP_ALCHEMY_KEY,
-    network: Network.MATIC_MAINNET,
+    if (data !== null) {
+      console.log(data);
+      setImages(data);
+    } else {
+      alert("Error loading images");
+      console.log(error);
+    }
   }
-
   useEffect(() => {
-    if (isConnected && !nfts.length) {
-      console.log("Wallet is connected" + chain.name)
-      getAlchemyNFTs()
-      
+    if (address) {
+      getImages();
     }
-
-  }, [getNfts])
-
-  async function getAlchemyNFTs() {
-    try {
-      const alchemy = new Alchemy(alchemysettings);
-      var itemArray = [];
-
-      // Chigag Network Logic - LyghtC0de
-      let network = chain.name;
-      console.log("Connected network is: " + chain.name);
-      if (network === 'Polygon') {
-        console.log("Retrieving NFT's from Alchemy...")
-        // Alchemy Logic - LyghtC0de
-        const mintedNfts = await alchemy.nft.getNftsForOwner(address);
-        console.log(mintedNfts)
-        for (const nft of mintedNfts.ownedNfts) {
-          let contractaddr = nft.contract.address;
-          let token = nft.tokenId;
-          let name = nft.title;
-          let imagePath = nft.media[0].gateway;
-          let nftName = nft.rawMetadata.name;
-          let desc = nft.description;
-
-          // Chigag retrieve Metadata - LyghtC0de
-          if (contractaddr) {
-            if (imagePath == undefined) {
-              console.log("");
-            } else {
-              // Handle broken images - LyghtC0de
-              let img = imagePath.replace("ipfs://", "https://ipfs.io/ipfs/");
-              //Retrieve Contract name - LyghtC0de
-              alchemy.nft.getContractMetadata(contractaddr).then((result) => {
-                let nftdata = {
-                  name: name,
-                  img: img,
-                  tokenId: token,
-                  desc: desc,
-                  nftName: nftName,
-                  contract: result.name,
-                };
-                itemArray.push(nftdata);
-              });
-            }
-          }
-        }
-        await new Promise((r) => setTimeout(r, 1000));
-        getNfts(itemArray);
-        awaitLoading("loaded");
-
-      }
-      else {
-        toast.error("Switch to Polygon");
-      }
-
-
-    } catch (error) {
-      toast.error(error.reason);
-
-    }
+  }, [address]);
 
 
 
-  }
 
-  if (isDisconnected)
+  if (!address)
     return (
       <div>
         <Spacer></Spacer>
@@ -129,7 +88,7 @@ export default function Gallery(props) {
           </Row>
           <Text style={{
             color: theme.colors.secondary.value,
-          }} h4>No NFT's Found! Please Connect Wallet</Text>
+          }} h4>Connect Wallet</Text>
         </Container>
       </div>
     );
@@ -139,52 +98,28 @@ export default function Gallery(props) {
       <Spacer></Spacer>
       <Container display='flex' justify='center' aligncontent='center' md="true">
         <Row justify='center'>
-          <Image src="lamat.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
-        </Row>
-        <Row display='flex' justify='center' aligncontent='center'>
-          <Col css={{ size: "$50", paddingLeft: "$10", paddingTop: "$1" }}>
-            <Card css={{ p: "$3", backgroundColor: "$black", boxShadow: '0px 0px 4px #f2e900' }}>
-              <Card display='flex' justify='center' aligncontent='center' css={{ backgroundColor: "$black", p: "$3", marginTop: '$1' }}>
-                <Row display='flex' justify='center' aligncontent='center'>
-                </Row>
-                <Row display='flex' justify='center' aligncontent='center'>
-                  <Button
-                    size="sm"
-                    color="gradient"
-                    onPress={getAlchemyNFTs}
-                    css={{ marginRight: '4px' }}
-
-                  >
-                    <Text style={{
-                      color: theme.colors.primaryLightContrast.value,
-                    }}>Refresh NFTs</Text>
-                  </Button>
-                </Row>
-              </Card>
-            </Card>
-          </Col>
+          <Image src="bakab.png" style={{ maxWidth: '77px', marginRight: '0px' }} />
         </Row>
         <Row display='flex' justify='center' aligncontent='center'>
 
           <Masonry columns={3} spacing={.3}>
-            {nfts.map((nft, i) => {
+            {images.map((img, i) => {
               return (
 
                 <div key={i}>
 
-
-                  {nft.img.split('.').pop() === 'mp4' ?
+                  {img.metadata.mimetype === "video/mp4" ?
                     <Card key={i}
-                      value={i} sx={{ minHeight: 226, flexGrow: 1 }}>
+                      value={i} sx={{ flexGrow: 1 }}>
                       <CardCover>
                         <video
                           autoPlay
                           loop
                           muted
-                          poster="alchemyblue.png"
+                          poster="bakab.png"
                         >
                           <source
-                            src={nft.img}
+                            src={CDNURL + "/" + img.name}
                             type="video/mp4"
                           />
                         </video>
@@ -196,91 +131,31 @@ export default function Gallery(props) {
                           level="h6"
                           mt={{ xs: 12, sm: 18 }}
                         >
-                          {/* {nft.contract} */}
+                          {image.name}
                         </Typography>
                       </CardContent>
                     </Card>
-
                     :
+
                     <Card key={i}
-                      value={i} sx={{ flexGrow: 1 }}>
+                      value={i} sx={{ flexGrow: 1, }}>
                       <CardOverflow>
                         <img
-                          src={nft.img}
-                          srcSet={nft.img}
-                          alt={nft.contract}
+                          src={CDNURL + "/" + img.name}
+                          alt={img.name}
+                          loading="lazy"
                         />
-                        {/* <Typography
-                            fontWeight="xsm"
-                            textColor="#7828C8"
-                          >
-                            {nft.contract}
-                          </Typography> */}
+                        <Typography
+                          fontWeight="xsm"
+                          textColor="#7828C8"
+                        >
+                          {img.name}
+                        </Typography>
                       </CardOverflow>
                     </Card>
                   }
-
-
-
-                  {/* <Typography
-                          level="h6"
-                          fontWeight="lg"
-                          textColor="#"
-                          mt={{ xs: 12, sm: 18 }}
-                        >
-                          {nft.contract}
-                        </Typography> */}
-
-                  {/* <Card
-                    isHoverable
-                    css={{ mw: "240px", marginRight: "$1" }}
-                    variant="bordered"
-                    key={i}
-                    value={i}
-                  >
-                    <Card.Image src={nft.img} />
-                    <Card.Body md="true">
-                      <h5
-                        style={{
-                          color: "#9D00FF",
-                          fontFamily: "Genos",
-                        }}
-                      >
-                        {nft.contract}
-                      </h5>
-                      <Text h6>
-                        {nft.nftName}
-                      </Text> */}
-                  {/* Chigag Description is too long for some NFTs */}
-                  {/* <Text css={{fontSize:'$sm'}}>{nft.desc}</Text> */}
-                  {/* Chigag Hide Resell Price Input for viewer */}
-                  {/* <Input
-                          size="sm"
-
-                          css={{
-                            marginTop: "$2",
-                            maxWidth: "120px",
-                            marginBottom: "$2",
-                            border: "$blue500",
-                          }}
-                          style={{
-                            color: "white",
-                            fontFamily: "Genos",
-                            fontWeight: "bolder",
-                            fontSize: "15px",
-                          }}
-                          aria-label="Set your price"
-                          placeholder="Set your Price"
-                          onChange={(e) =>
-                            updateresalePrice({
-                              ...resalePrice,
-                              price: e.target.value,
-                            })
-                          }
-                        /> */}
-                  {/* </Card.Body>
-                  </Card> */}
                 </div>
+
               );
             })}
           </Masonry>

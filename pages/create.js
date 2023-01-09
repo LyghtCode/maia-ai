@@ -6,19 +6,36 @@ import NFT from '../engine/MAIA.json';
 import Market from '../engine/Market.json';
 import { nftcreator, marketcontract } from '../engine/configuration';
 import { Card, Button, Input, Col, Row, Spacer, Container, Text, Image } from '@nextui-org/react';
-import client from '../engine/configuration';
 import { toast } from 'react-toastify';
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://nullspauughetdzjgtjj.supabase.co', process.env.NEXT_PUBLIC_SUPABASE_KEY)
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export default function Create() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
-  const [fileUrl, setFileUrl] = useState(null)
+  const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' })
 
-  useEffect(() => {
-  }, [])
+  async function uploadImage() {
+    let file = prediction.output[0];
+
+    
+    try {
+      const { data, error } = await supabase
+      .storage
+      .from('maia-images')
+      .upload("all/" + prediction.input.prompt, file)
+
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const router = useRouter();
   const { name, description, price } = formInput;
@@ -195,6 +212,9 @@ export default function Create() {
                 </Button>
               </Row>
             </form>
+            {prediction ? <Button onPress={uploadImage} auto bordered rounded ghost animated shadow justify='center' style={{ fontSize: '20px' }} css={{ marginTop: '$2', marginBottom: '$5' }}>
+                  <Image src="tree.png" style={{ maxWidth: '44px', marginRight: '0px' }}  ></Image>
+                </Button> : null}
           </Container>
         </Card>
 

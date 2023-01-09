@@ -14,7 +14,7 @@ export default function Sell(props) {
   const [resalePrice, updateresalePrice] = useState({ price: ''})
 
   var alchemysettings = {
-    apiKey: process.env.NEXT_APP_ALCHEMY_KEY, 
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY, 
     network: Network.MATIC_MAINNET,
   }
 

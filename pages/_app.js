@@ -20,6 +20,10 @@ import { infuraProvider } from 'wagmi/providers/infura';
 import { publicProvider } from 'wagmi/providers/public';
 import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import "@fontsource/genos"
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+
+
+const queryClient = new QueryClient()
 
 
 const { chains, provider } = configureChains(
@@ -86,134 +90,135 @@ function MyApp({ Component, pageProps, router }) {
 
   return (
     // the magic sauce
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider coolMode theme={midnightTheme({
-        accentColor: '#bd00ff',
-        borderRadius: 'small',
-        overlayBlur: 'small',
+    <QueryClientProvider client={queryClient}>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider coolMode theme={midnightTheme({
+          accentColor: '#bd00ff',
+          borderRadius: 'small',
+          overlayBlur: 'small',
 
-      })}
-        modalSize="compact" chains={chains}>
-        {/* Next U.I. */}
-        <NextUIProvider theme={theme}>
-          
+        })}
+          modalSize="compact" chains={chains}>
+          {/* Next U.I. */}
+          <NextUIProvider theme={theme}>
 
-          <Navbar isBordered variant="floating">
-            {/* Branding */}
-            <Navbar.Brand>
-              <Navbar.Toggle aria-label="toggle navigation" />
-              {/* <Image src="bakab.png" style={{ maxWidth: '66px', marginRight: '0px' }}  ></Image> */}
-              {/* <Text color="inherit" hideIn="xs" size={36} css={{ fontWeight: "300", textShadow: '0px 0px 3px #f2e900' }}>
+
+            <Navbar isBordered variant="floating">
+              {/* Branding */}
+              <Navbar.Brand>
+                <Navbar.Toggle aria-label="toggle navigation" />
+                {/* <Image src="bakab.png" style={{ maxWidth: '66px', marginRight: '0px' }}  ></Image> */}
+                {/* <Text color="inherit" hideIn="xs" size={36} css={{ fontWeight: "300", textShadow: '0px 0px 3px #f2e900' }}>
                 Clubhouse
               </Text> */}
-            </Navbar.Brand>
-            {/* Nav Menu */}
-            <Navbar.Content enableCursorHighlight activeColor='secondary' hideIn="xs" variant="solid-rounded">
+              </Navbar.Brand>
+              {/* Nav Menu */}
+              <Navbar.Content enableCursorHighlight activeColor='secondary' hideIn="xs" variant="solid-rounded">
 
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="bakab.png" style={{ maxWidth: '44px', marginRight: '0px' }}></Image></Navbar.Link>
-              {/* <Navbar.Link style={{fontFamily:'SF Pro Display', fontSize:'25px', color:'white', fontWeight:'500'}} href="/create">
+                <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '200' }} href="/"><Image src="bakab.png" style={{ maxWidth: '44px', marginRight: '0px' }}></Image></Navbar.Link>
+                {/* <Navbar.Link style={{fontFamily:'SF Pro Display', fontSize:'25px', color:'white', fontWeight:'500'}} href="/create">
               Create
             </Navbar.Link> */}
-              {/* <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="etz.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="chuwen.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/midjourn"><Image src="ahau.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-              <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/stable-vid"><Image src="lamat.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
-            </Navbar.Content>
-            {/* Mobile Menu */}
-            <Navbar.Collapse>
+                {/* <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '33px', color: '#00ff9f', fontWeight: '260' }} href="/fiat">Fiat</Navbar.Link> */}
+                <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/mint"><Image src="etz.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+                <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/create"><Image src="chuwen.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+                <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/midjourn"><Image src="ahau.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+                <Navbar.Link style={{ fontFamily: 'Genos', fontSize: '44px', color: '#00ff9f', fontWeight: '260' }} href="/stable-vid"><Image src="lamat.png" style={{ maxWidth: '44px', marginRight: '0px' }} /></Navbar.Link>
+              </Navbar.Content>
+              {/* Mobile Menu */}
+              <Navbar.Collapse>
 
-              <Navbar.CollapseItem>
-                <Image src="bakab.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
-                <Link
-                  color="#f2e900"
-                  css={{
-                    minWidth: "66%",
-                    fontSize: '33px',
-                  }}
-                  href="/"
-                >Home
-                </Link>
-              </Navbar.CollapseItem>
-              <Navbar.CollapseItem>
-                <Image src="etz.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
-                <Link
-                  color="#f2e900"
-                  css={{
-                    minWidth: "66%",
-                    fontSize: '33px',
-                  }}
-                  href="/mint"
-                >Mint
-                </Link>
-              </Navbar.CollapseItem>
-              <Navbar.CollapseItem>
-                <Image src="chuwen.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
-                <Link
-                  color="#f2e900"
-                  css={{
-                    minWidth: "66%",
-                    fontSize: '33px',
-                  }}
-                  href="/create"
-                >Create
-                </Link>
-              </Navbar.CollapseItem>
-              <Navbar.CollapseItem>
-                <Image src="ahau.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
-                <Link
-                  color="#f2e900"
-                  css={{
-                    minWidth: "66%",
-                    fontSize: '33px',
-                  }}
-                  href="/mint"
-                >Market
-                </Link>
-              </Navbar.CollapseItem>
-              <Navbar.CollapseItem>
-                <Image src="lamat.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
-                <Link
-                  color="#f2e900"
-                  css={{
-                    minWidth: "66%",
-                    fontSize: '33px',
-                  }}
-                  href="/gallery"
-                >Gallery
-                </Link>
-              </Navbar.CollapseItem>
+                <Navbar.CollapseItem>
+                  <Image src="bakab.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
+                  <Link
+                    color="#f2e900"
+                    css={{
+                      minWidth: "66%",
+                      fontSize: '33px',
+                    }}
+                    href="/"
+                  >Home
+                  </Link>
+                </Navbar.CollapseItem>
+                <Navbar.CollapseItem>
+                  <Image src="etz.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
+                  <Link
+                    color="#f2e900"
+                    css={{
+                      minWidth: "66%",
+                      fontSize: '33px',
+                    }}
+                    href="/mint"
+                  >Mint
+                  </Link>
+                </Navbar.CollapseItem>
+                <Navbar.CollapseItem>
+                  <Image src="chuwen.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
+                  <Link
+                    color="#f2e900"
+                    css={{
+                      minWidth: "66%",
+                      fontSize: '33px',
+                    }}
+                    href="/create"
+                  >Create
+                  </Link>
+                </Navbar.CollapseItem>
+                <Navbar.CollapseItem>
+                  <Image src="ahau.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
+                  <Link
+                    color="#f2e900"
+                    css={{
+                      minWidth: "66%",
+                      fontSize: '33px',
+                    }}
+                    href="/mint"
+                  >Market
+                  </Link>
+                </Navbar.CollapseItem>
+                <Navbar.CollapseItem>
+                  <Image src="lamat.png" style={{ maxWidth: '33px', marginRight: '0px' }} />
+                  <Link
+                    color="#f2e900"
+                    css={{
+                      minWidth: "66%",
+                      fontSize: '33px',
+                    }}
+                    href="/gallery"
+                  >Gallery
+                  </Link>
+                </Navbar.CollapseItem>
 
-            </Navbar.Collapse>
-            {/* Rainbow Kit Button */}
-            <ConnectButton label='Knnxt' showBalance={false} accountStatus={{
-              smallScreen: 'avatar',
-              largeScreen: 'full',
-            }} />
-          </Navbar>
-          {/* Animation Settings */}
-          <LazyMotion features={domAnimation}>
-            <AnimatePresence mode="wait"
-            >
-              <motion.div className="page-wrap" key={router.route} initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
+              </Navbar.Collapse>
+              {/* Rainbow Kit Button */}
+              <ConnectButton label='Knnxt' showBalance={false} accountStatus={{
+                smallScreen: 'avatar',
+                largeScreen: 'full',
+              }} />
+            </Navbar>
+            {/* Animation Settings */}
+            <LazyMotion features={domAnimation}>
+              <AnimatePresence mode="wait"
               >
-                {/* Main Site Pages */}
-                <Component {...pageProps} key={router.route} />
-              </motion.div>
-            </AnimatePresence>
-          </LazyMotion>
-          {/* Footer Starts Here */}
-          <Footer />
-          {/* Toastsss P: */}
-          <ToastContainer transition={Zoom} autoClose={7777} theme='dark' />
-        </NextUIProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+                <motion.div className="page-wrap" key={router.route} initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                >
+                  {/* Main Site Pages */}
+                  <Component {...pageProps} key={router.route} />
+                </motion.div>
+              </AnimatePresence>
+            </LazyMotion>
+            {/* Footer Starts Here */}
+            <Footer />
+            {/* Toastsss P: */}
+            <ToastContainer transition={Zoom} autoClose={7777} theme='dark' />
+          </NextUIProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </QueryClientProvider>
   );
 }
 
 export default MyApp;
-  
