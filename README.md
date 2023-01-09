@@ -1,4 +1,4 @@
-## MAIA - A.I. Powered Web3 Marketplace
+## MAIA - A.I. Creation Dashboard
 
 
 ```bash
