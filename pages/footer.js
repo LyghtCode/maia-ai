@@ -7,7 +7,7 @@ export default function Footer() {
     {
       id: 1,
       img: "bakab.png",
-      url: "https://lyghtcode.vercel.app",
+      url: "https://olmec.ai",
     },
     {
       id: 2,

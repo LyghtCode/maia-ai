@@ -126,3 +126,28 @@
     filter: invert(1);
   }
 }
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+/* background of scroll color */
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+/* bar default static thumb color */
+*::-webkit-scrollbar-thumb {
+  background: #38f561 ;
+  border-radius: 10px;
+}
+
+/* bar Hover color */
+*::-webkit-scrollbar-thumb:hover {
+  background: #38f561;
+  border-radius: 10px;
+}
+/* bar Press color */
+*::-webkit-scrollbar-thumb:active {
+  background: #01ff9e;
+  border-radius: 10px;
+}

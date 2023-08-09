@@ -21,6 +21,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import "@fontsource/genos"
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import '../styles/globals.css'
 
 
 const queryClient = new QueryClient()
